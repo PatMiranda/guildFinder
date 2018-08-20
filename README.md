@@ -1,1 +1,1 @@
-# guildFinder
+# clanFinder

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder</title>
+  <link href="https://fonts.googleapis.com/css?family=Metamorphous|Nothing+You+Could+Do|Uncial+Antiqua|UnifrakturMaguntia" rel="stylesheet">
+ 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .jumbotron{
+            background-image: url("https://nerdist.com/wp-content/uploads/2015/08/Dungeons-and-Dragons-movie.jpg")
+        }
+        h1 {
+            color: whitesmoke;
+            font-family: 'Metamorphous', cursive;
+        }
+        h2{
+            color: black;
+            font-family: 'Uncial Antiqua', cursive;
+        }
+        #arrow{
+            width: 200px;
+        }
+        #player-image{
+            width: 200px;
+        }
+        #guild-image{
+            width: 200px;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1 class="text-center"><span class="fa fa-fire"></span> D&D Class Test</h1>
+
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p><a href="/api/friends">API Characters Link</a> | <a href="">GitHub Repo</a></p>
+      </div>
+    </footer>
+
+  </div>
+  <div class="container" id="question-box">
+      <h2>Questions: </h2>
+    <hr>
+      <h3>
+          <strong>Your Character</strong>
+      </h3>
+        <h4>Your Name (Required)</h4>
+             <input type="text" id="name" class="form-control" required>
+         <h4>Character Name (Required)</h4>
+            <input type="text" id="character-name" class="form-control" required>
+        <h4>Link to your characters image (Required)</h4>
+            <input type="text" id="photo" class="form-control" required>
+    <hr>
+    <h3>
+        <strong>Question 1</strong>
+    </h3>
+        <h4>Your party encounters an ancient Dwarven ruin that cuts through
+            the mountain range you need to cross. You: 
+        </h4>
+        <select class="chosen-select" id="q1">
+            <option value="">Select Option</option>
+            <option value="1">Let someone stronger go in first</option>
+            <option value="2">Use your keen senses to detect danger</option>
+            <option value="3">Cast a Light spell to reveal any threats</option>
+            <option value="4">Weigh risk vs. reward, say "Should we just go over the pass?"</option>
+            <option value="5">Draw your sword, light a torch, and barrel into the dark</option>
+        </select>
+    <hr>
+    <h3>
+        <strong>Question 2</strong>
+    </h3>
+        <h4>A wagon is over-turned on the road ahead, a family of farmers is on their knees
+            with their hands on their heads. Two bandits are holding swords to their throats, while
+            another two are ransacking the wagon. You: 
+        </h4>
+        <select class="chosen-select" id="q2">
+            <option value="">Select Option</option>
+            <option value="1">Cut through the woods around the scene, not your problem</option>
+            <option value="2">Fire two arrows at once, killing the hostage takers, and sneak up on the others</option>
+            <option value="3">Call upon wildlife to help kill these criminals</option>
+            <option value="4">Announce your presence, give the bandits a chance to give up</option>
+            <option value="5">Walk up confidently, smash the bandits heads together.</option>
+        </select>
+    <hr>
+    <h3>
+        <strong>Question 3</strong>
+    </h3>
+        <h4>You hear a tyrannical Duke has inherited the thrown in your homeland under questionable
+            circumstances. You hear stories of un-just taxes, abusive arrests, and the conjurings of
+            an unnecessary war. You: 
+        </h4>
+        <select class="chosen-select" id="q3">
+            <option value="">Select Option</option>
+            <option value="1">If you ever return to your homeland, you'll arrange an unfortunate accident for him</option>
+            <option value="2">Never much been one for cities and politics</option>
+            <option value="3">Return home to offer wisdom, help, and advice for the new King</option>
+            <option value="4">If the King calls upon you, your duty must be fulfilled</option>
+            <option value="5">Rally your forces, restore the rightful throne with blood</option>
+        </select>
+    <hr>
+    <h3>
+        <strong>Question 4</strong>
+    </h3>
+        <h4>After a long and arduous campaign, days and days fighting with your comrades through a pitch black dungeon, 
+            fighting spiders, orcs, trolls, and all sorts of evil creatures, you and you alone spot
+            a bag of jewels in the clutches of a skeleton. You: 
+        </h4>
+        <select class="chosen-select" id="q4">
+            <option value="">Select Option</option>
+            <option value="1">Pocket the bag, there will be more treasure for everyone else elsewhere, probably</option>
+            <option value="2">Check for traps, it wouldn't be the first bait you've seen in this cursed place</option>
+            <option value="3">Try to detect evil, this skeleton might pop up and try to kill you</option>
+            <option value="4">Have found more treasure to split with your party! You call them over for backup</option>
+            <option value="5">Smash the skeleton, grab the bag, you might share with anyone else who makes it out alive</option>
+        </select>
+    <hr>
+    <h3>
+        <strong>Question 5</strong>
+    </h3>
+        <h4>A member of your party is on the executioners block in the town square. You: 
+        </h4>
+        <select class="chosen-select" id="q5">
+            <option value="">Select Option</option>
+            <option value="1">Work better alone, they were stupid for getting caught</option>
+            <option value="2">Cause a distraction and leap up to save your friend</option>
+            <option value="3">Unbind the wood to destroy the structure and free your friend</option>
+            <option value="4">Demand a proper trial, perhaps a trial-by-combat</option>
+            <option value="5">Cause a riot, see if an opportunity presents itself in the chaos</option>
+        </select>
+    <hr>
+    <h3>
+        <strong>Question 6</strong>
+    </h3>
+        <h4> You encounter an old stone bridge on your journey, a troll emerges from underneath the bridge
+            demanding a toll of 20 gold pieces. You:
+        </h4>
+        <select class="chosen-select" id="q6">
+            <option value="">Select Option</option>
+            <option value="1">Throw a poisoned knife at the trolls throat</option>
+            <option value="2">Leave and find another way across</option>
+            <option value="3">Cast an illusory bag of gems and gold, offer it to the troll</option>
+            <option value="4">The price is rediculous, the troll has no right to tax a public bridge</option>
+            <option value="5">"Move... Or I will move you."</option>
+        </select>
+    <hr>
+    <h3>
+        <strong>Question 7</strong>
+    </h3>
+        <h4> You are hired to re-take a Dwarven city that has been occupied by a greedy dragon for 
+            nearly a century. You: 
+        </h4>
+        <select class="chosen-select" id="q7">
+            <option value="">Select Option</option>
+            <option value="1">Go shopping for poison and magical stealth gear, if you can't kill it, maybe you can grab a few gems</option>
+            <option value="2">Offer assistance, for a price</option>
+            <option value="3">Offer asssistance and warning, Dragons are not to be trifled with</option>
+            <option value="4">Help the dwarves reclaim their homeland</option>
+            <option value="5">"A dragon, never killed one of those before!"</option>
+        </select>
+    <hr>
+    <h3>
+        <strong>Question 8</strong>
+    </h3>
+        <h4> A death cult is utilizing a small child to hold open a portal to the abyss. You've killed the cult, 
+            but the child lives, leaving a gaping portal to hell open, spewing forth demons and abominations upon 
+            the world. You:  
+        </h4>
+        <select class="chosen-select" id="q8">
+            <option value="">Select Option</option>
+            <option value="1">Kill the child, one life is nothing against a world steeped in chaos</option>
+            <option value="2">Kill the child, Mother Gaia is bleeding and burning</option>
+            <option value="3">Kill the child, there is no time to un-make the incantation</option>
+            <option value="4">Kill the child, your people are suffering</option>
+            <option value="5">Leave the child alive, "A world in chaos and war, sounds fun."</option>
+        </select>
+    <hr>
+    <h3>
+        <strong>Question 9</strong>
+    </h3>
+        <h4>Recovering an ancient artifact on one of your adventures, you discover, gives you the Right to the 
+            Crown. Your people bow before before you, untold riches and power are now at your finger-tips. You:  
+        </h4>
+        <select class="chosen-select" id="q9">
+            <option value="">Select Option</option>
+            <option value="1">Try to sell it, "I don't care about the fates of peasants"</option>
+            <option value="2">"I am honored, but I think there must be someone more fit to lead"</option>
+            <option value="3">"I promise, I will use my power and knowledge to make a better world"</option>
+            <option value="4">"I am honored, my duty is to the people. "</option>
+            <option value="5">"The sun will never set on my Empire!"</option>
+        </select>
+    <hr>
+    <h3>
+        <strong>Question 10</strong>
+    </h3>
+        <h4>"Welcome to my humble shop!" Says the weapons-smith, "What can I do for'ya?"  
+        </h4>
+        <select class="chosen-select" id="q10">
+            <option value="">Select Option</option>
+            <option value="1">Pouch of throwing Knives</option>
+            <option value="2">Composite Bow, 20 Arrows</option>
+            <option value="3">Staff</option>
+            <option value="4">Broad-sword</option>
+            <option value="5">Great-sword</option>
+        </select>
+    <hr>
+        <button class="btn waves-effect waves-light" type="submit" name="action" id="submitButton">Submit Responses</button>
+  </div>
+  <div id="modal1" class="modal" style="display: none">
+		<div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                        <img id="player-image">
+                    <img id="arrow" src="https://img.freepik.com/free-icon/move-to-next_318-80203.jpg?size=338c&ext=jpg">
+                    
+                        <img id="guild-image">
+                </div>
+            </div>
+            
+            <h4>Your Guild: </h4>
+            <h5 id="guild-desc"></h5>
+            <hr>
+            <h5>Guild: <h5 id="guild"></h5></h5>
+            <h5>Class: <h5 id="your-class"></h5></h5>
+            <h5>Name: <h5 id="char-name"></h5></h5>
+            <h5>Others in your Clan: <h5 id="clan"></h5></h5>
+		</div>
+		<div class="modal-footer">
+			<a href="/survey" class="modal-action modal-close waves-effect waves-green btn-flat">Fill Again!</a>
+		</div>
+    </div>
+    <footer class="footer">
+            <div class="container">
+              <p><a href="/api/friends">API Characters Link</a> | <a href="">GitHub Repo</a></p>
+            </div>
+          </footer>
+    <script type="text/javascript">
+		
+        
+		// Activate submit button
+		$('#submitButton').on('click', function(event) {
+            event.preventDefault();
+            
+            // Gather user inputs
+            var num1 = parseInt($('#q1').val());
+             var num2 = parseInt($('#q2').val());
+             var num3 = parseInt($('#q3').val());
+             var num4 = parseInt($('#q4').val());
+             var num5 = parseInt($('#q5').val());
+             var num6 = parseInt($('#q6').val());
+             var num7 = parseInt($('#q7').val());
+             var num8 = parseInt($('#q8').val());
+             var num9 = parseInt($('#q9').val());
+             var num10 = parseInt($('#q10').val());
+
+             var charScore = num1 + num2 + num3 + num4+ num5 + num6 + num7 + num8 + num9+ num10; 
+            
+
+        
+            function chooseClass (x){
+                if(x <= 10){
+                    myClass = "Assassin"
+                }
+                if (x > 10 && x < 21){
+                    myClass = "Ranger"
+                }
+                if(x > 20 && x < 31 ){
+                    myClass = "Wizard"
+                }
+                if (x > 30 && x < 41){
+                    myClass = "Knight"
+                }
+                if(x > 40){
+                    myClass = "Barbarian"
+                }
+            }
+            var myClass = "";
+                //  console.log(myClass);
+             chooseClass(charScore);
+             console.log(myClass);
+
+            var userInput = {
+                name: $('#name').val().trim(),
+                characterName : $('#character-name').val().trim(),
+                class: myClass,
+				photo: $('#photo').val().trim(),
+				scores:[
+					$('#q1').val(),
+					$('#q2').val(),
+					$('#q3').val(),
+					$('#q4').val(),
+					$('#q5').val(),
+					$('#q6').val(),
+					$('#q7').val(),
+					$('#q8').val(),
+					$('#q9').val(),
+					$('#q10').val()
+				]
+            };
+            $("#question-box").css("display", "none");
+            $("#modal1").css("display", "block");
+            $("#your-class").text(userInput.class);
+            $("#char-name").text(userInput.characterName);
+            $("#player-image").attr("src", userInput.photo.toString())
+
+            function guildName (x){
+                if(x === "Assassin"){
+                    $("#guild").text("Brotherhood of the Assassins")
+                    $("#guild-desc").text("You Belong to the brotherhood of Assassins.")
+                    $("#guild-image").attr("src", "http://www.enworld.org/forum/attachment.php?attachmentid=79436&d=1482808481");
+
+                }
+                if(x === "Ranger"){
+                    $("#guild").text("Children of Gaia")
+                    $("#guild-desc").text("Your kin and yourself share a special bond with the earth.")
+                    $("#guild-image").attr("src", "https://i.pinimg.com/originals/a0/8d/77/a08d775c810837b0de0f7891b0510195.jpg");
+
+                }
+                if(x === "Wizard"){
+                    $("#guild").text("Seekers of Truth")
+                    $("#guild-desc").text("You are an eternal student of the mystic arts.")
+                    $("#guild-image").attr("src", "https://static.planetminecraft.com/files/resource_media/screenshot/1305/Fire_mage_by_Eliag1101_4759438_lrg.jpg");
+
+                }
+                if(x === "Knight"){
+                    $("#guild").text("Warriors of the Dawn")
+                    $("#guild-desc").text("Fielty to your king, and the betterment of other guide your path.")
+                    $("#guild-image").attr("src", "https://i.imgur.com/hr7zvej.jpg");
+
+                }
+                if(x === "Barbarian"){
+                    $("#guild").text("Strong-Arm of the Mountain Men")
+                    $("#guild-desc").text("Blood and glory are the only paths to greatness.")
+                    $("#guild-image").attr("src", "https://i2.wp.com/nerdarchy.com/wp-content/uploads/2015/05/Garruk-Primal-Hunter.jpg?resize=259%2C300&ssl=1");
+
+                }
+            }
+            
+             guildName(userInput.class);
+            console.log("This is the sum " + charScore);
+            console.log(userInput)
+			
+            $.post('/api/friends', userInput).done(function(data){
+                console.log("response = " + JSON.stringify(data));
+                for(i = 0; i<data.length; i++){
+                    if(data[i].class === userInput.class){
+                        $("#clan").append( data[i].characterName + ", ");
+                    }
+
+                }
+                
+            })
+           
+		});
+	</script>
+</body>
+</html>
